@@ -15,6 +15,7 @@
 
 
 #include <bringup/bringup.hpp>
+#include <biwak/can.hpp>
 
 
 /*--- Declaration ----------------------------------------------------------*/

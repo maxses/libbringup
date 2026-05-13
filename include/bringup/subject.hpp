@@ -30,7 +30,7 @@ class CSubject
       CList <CResult> m_results;
 
    public:
-      CSubject(const char *topic, int results = 8);
+      CSubject(const char *topic, int results = 0);
       virtual int run() = 0;
       const char *getTopic() const
          {return(m_topic);};
