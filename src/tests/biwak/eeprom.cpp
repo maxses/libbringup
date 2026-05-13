@@ -134,7 +134,8 @@ int CTestI2cEeprom::run( )
    // 128Byte EEPROMs
 
    //sta=testAssert("rw (value@0)", (readBack2!=_new), readBack2, EResult::warning);
-
+   (void)sta;
+   
    return(sta);
 }
 

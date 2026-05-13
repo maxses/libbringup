@@ -75,7 +75,7 @@ int CTestFlashIntern::run( )
             #if defined FLASH_32BIT_ACCESS
                flash.writeData32( (address_t)&start[i2], (char*)&p, 4 );
             #else
-            exception();
+               abort();
             #endif
          }
          for(int i2=0; i2<flash.eraseBlockSize() / (int)sizeof(start[0]); i2++)
