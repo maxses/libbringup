@@ -17,6 +17,7 @@
 
 enum class EResult
 {
+   unknown=0,
    ok,
    warning,
    failed,
@@ -25,6 +26,7 @@ enum class EResult
    end
 };
 
+class CSubject;
 
 class CResult
 {
@@ -33,18 +35,20 @@ private:
    const char *m_testString;
    EResult m_eResult;
    int m_value;
+   const CSubject* m_pSubject;
 
 public:
-   CResult()
+   CResult(  )
       :m_testString(nullptr)
-      ,m_eResult( EResult::failed )
       ,m_value( 0 )
+      ,m_pSubject( 0 )
    {
    };
-   CResult(const char *testString, EResult eResult, int value)
+   CResult(const CSubject* subject, const char *testString, EResult eResult, int value)
       :m_testString( testString )
       ,m_eResult( eResult )
       ,m_value( value )
+      ,m_pSubject( subject )
    {};
    const char *getTestString() const
    {
@@ -57,6 +61,10 @@ public:
    int value() const
    {
       return (m_value);
+   }
+   bool belongsTo(const CSubject* subject) const
+   {
+      return( m_pSubject==subject );
    }
 };
 

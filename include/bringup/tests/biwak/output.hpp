@@ -38,7 +38,7 @@ class CTestOutputs: public CSubject
    public:
 
       CTestOutputs( const SOutput *outputs, int count  )
-         : CSubject("Outputs", count)
+         : CSubject( "Outputs" )
          , m_outputs(outputs)
          , m_outputCount(count)
          //, m_outputsString(10)

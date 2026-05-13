@@ -55,8 +55,9 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-CBringup::CBringup( int tests /*=18*/ )
+CBringup::CBringup( int tests /*=18*/, int results /*=24*/ )
    :m_tests( tests )
+   ,m_results( results )
 {
    // Disable ECHO on Linux systems
    #if ! defined( STM32 )
@@ -86,6 +87,7 @@ CBringup::CBringup( int tests /*=18*/ )
 int CBringup::addTest( CSubject *issue)
 {
    m_tests << issue;
+   issue->setResultList( &m_results );
    return( issue->run() );
 }
 

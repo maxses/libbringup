@@ -34,6 +34,7 @@ static const char *resultStrings[]
 #else
 static const char *resultStrings[]
 {
+   [(int)EResult::unknown] = "UK",
    [(int)EResult::ok] = "Ok",
    [(int)EResult::warning] = "Warning",
    [(int)EResult::failed] = "Failed",
@@ -85,19 +86,22 @@ void CBringupWriter::printProtocoll() const
      tableHeader(issue->getTopic(), "" );
      for(const CResult &result: issue->results() )
      {
-        if(result.getResult()==EResult::info)
+        if( result.belongsTo( issue ) )
         {
-           char buf[10];
-           snprintf( buf, 10, "%d", result.value() );
-           tableRow( result.getTestString(), buf, 0 );
+           if(result.getResult()==EResult::info)
+           {
+              char buf[10];
+              snprintf( buf, 10, "%d", result.value() );
+              tableRow( result.getTestString(), buf, 0 );
+           }
+           else
+           {
+               tableRow(result.getTestString(), resultStrings[ (int)result.getResult() ]
+                 , (int)result.value()
+                 );
+           }
+           counter[ (int)result.getResult() ]++;
         }
-        else
-        {
-            tableRow(result.getTestString(), resultStrings[ (int)result.getResult() ]
-              , (int)result.value()
-              );
-        }
-        counter[ (int)result.getResult() ]++;
      }
    }
 
@@ -107,7 +111,8 @@ void CBringupWriter::printProtocoll() const
       tableRow( "Tot. ok", counter[ (int)EResult::ok ]);
       tableRow( "Tot. warnings", counter[ (int)EResult::warning ]);
       tableRow( "Tot. failes", counter[ (int)EResult::failed ]);
-      tableRow( "tests", m_bringup.tests().count() );
+      tableRow( "Subj.", m_bringup.tests().count() );
+      tableRow( "Res.", m_bringup.results().count() );
    #else
       printHeader("Summary");
       tableHeader("Tests", "");

@@ -35,7 +35,7 @@ class CTestButton: public CSubject
    public:
 
       CTestButton( CButton &button, EMode mode=eButton, const char *name="None" )
-         : CSubject("Button", 3)
+         : CSubject( "Button" )
          ,m_button( button )
          ,m_mode(mode)
       {

@@ -24,9 +24,8 @@
 const char *errorStr="\033[91mError\e[39m\n";
 const char *okStr="\e[92mOk\e[39m\n";
 
-CSubject::CSubject(const char *topic, int results /*=8*/ )
+CSubject::CSubject( const char *topic )
    :m_topic(topic)
-   ,m_results( results )
 {
    printf("Current issue tested: %s\n", topic);
    return;
@@ -34,7 +33,7 @@ CSubject::CSubject(const char *topic, int results /*=8*/ )
 
 int CSubject::testAssert(const char *test, bool assertion, int value, EResult eResult /*=EResult::failed*/ )
 {
-   m_results.push_back( CResult(test, ( assertion ? EResult::ok : eResult), value  ) );
+   m_pResults->push_back( CResult(this, test, ( assertion ? EResult::ok : eResult), value  ) );
    return( assertion ? 0 : -1 );
 }
 
@@ -54,7 +53,7 @@ int CSubject::testAssertSilent(const char *test, bool assertion, int value)
 
 int CSubject::testInfo(const char *test, int value)
 {
-   m_results.push_back( CResult(test, EResult::info, value  ) );
+   m_pResults->push_back( CResult( this, test, EResult::info, value  ) );
 
    return( 0 );
 }

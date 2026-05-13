@@ -28,11 +28,13 @@ class CBringup
 {
    private:
       CList<const CSubject*> m_tests;
+      CList <CResult> m_results;
 
    public:
-      CBringup( int tests = 18 );
+      CBringup( int tests = 18, int results = 24 );
       int addTest( CSubject *issue);
       const CList<const CSubject *> &tests() const {return(m_tests);};
+      const CList<CResult> &results() const {return(m_results);};
 };
 
 

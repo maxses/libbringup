@@ -25,7 +25,7 @@
 class CTestLibc: public CSubject
 {
    public:
-      CTestLibc(): CSubject("Libc", 3)
+      CTestLibc(): CSubject( "Libc" )
       { };
       virtual int run() override;
 };

@@ -27,20 +27,24 @@ class CSubject
 {
    private:
       const char *m_topic;
-      CList <CResult> m_results;
+      CList <CResult>* m_pResults = nullptr;
 
    public:
-      CSubject(const char *topic, int results = 0);
+      CSubject(const char *topic);
       virtual int run() = 0;
       const char *getTopic() const
          {return(m_topic);};
       const CList <CResult> &results() const
-         {return(m_results);};
+         { return( *m_pResults ); };
       int testAssert(const char *test, bool assertion, int value, EResult eResult=EResult::failed);
       int testAssertZero(const char *test, int value);
       int testAssertSilent(const char *test, bool assertion, int value);
       int testInfo(const char *test, int value);
       int hintAffirmed(const char* text);
+      void setResultList( CList <CResult>* results )
+      {
+         m_pResults=results;
+      }
 };
 
 

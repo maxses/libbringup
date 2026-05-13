@@ -33,7 +33,7 @@ class CTestPwmBuzzer: public CSubject
 
    public:
       CTestPwmBuzzer( CPwmLine &pwmLine )
-         : CSubject("PWM (buzzer)", 2)
+         : CSubject( "PWM (buzzer)" )
          , m_pwmLine( pwmLine )
       #if ! IS_ENABLED( CONFIG_BIWAK_PWM_BARREL_ORGAN )
          , m_bo( &pwmLine )

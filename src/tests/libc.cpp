@@ -28,7 +28,7 @@ int CTestLibc::run( )
    value=strtol("15956", nullptr, 10);
    sta=testAssert("Libc strtol 15956", value == 15956, value);
 
-   int size=0x100;
+   int size=0x4;
    void *ptr=nullptr;
 
    sta=testAssert( "malloc <size>", (ptr=malloc(size))  != 0, 0 );
