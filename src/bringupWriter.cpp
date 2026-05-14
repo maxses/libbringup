@@ -57,6 +57,10 @@ void CBringupWriter::printSoftwareInfo() const
 
    tableRow("Bringup", INFO( ));
 
+   #if defined GIT_REV_libbringup
+      tableRow("libbringup", INFO(_libbringup) );
+   #endif
+   
    #if defined GIT_REV_libbiwak
       tableRow("libbiwak", INFO(_libbiwak) );
    #endif
