@@ -24,7 +24,7 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestCan::run()
+void CTestCan::run()
 {
    int sta=0;
 
@@ -76,7 +76,7 @@ int CTestCan::run()
    sta = testAssert("Received CAN message", sta == 0 , 0);
    #endif
 
-   return(sta);
+   return;
 }
 
 

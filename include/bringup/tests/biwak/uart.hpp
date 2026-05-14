@@ -17,6 +17,7 @@
 
 
 #include <bringup/bringup.hpp>
+#include <biwak/uart.hpp>
 
 
 /*--- Declaration ----------------------------------------------------------*/

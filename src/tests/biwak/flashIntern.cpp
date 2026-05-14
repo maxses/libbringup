@@ -99,7 +99,12 @@ void CTestFlashIntern::run( )
    if(sta)
    {
       printf("Error in page at: %p\n", start);
-      testFatal("Err", (int)start);
+      
+      #if defined STM32
+         testFatal("Err", (int)start);
+      #else
+         testFatal("Err", 0);
+      #endif
    }
 
    //flash.writeData( flash.flashEnd()-2, &zero, 2 );

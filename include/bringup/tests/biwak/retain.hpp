@@ -18,6 +18,7 @@
 
 #include <bringup/bringup.hpp>
 #include <biwak/flash_i2c.hpp>
+#include <biwak/retain.h>
 
 
 /*--- Declaration ----------------------------------------------------------*/
@@ -27,12 +28,12 @@ class CRetain;
 
 class CTestRetain: public CSubject
 {
-      CFlashI2c &m_pI2cFlash;
+      CFlashX &m_pI2cFlash;
       CRetain *m_pRetain1, *m_pRetain2;
 
    public:
 
-      CTestRetain( CFlashI2c &i2c )
+      CTestRetain( CFlashX &i2c )
          : CSubject("Retain")
          ,m_pI2cFlash( i2c )
       { };

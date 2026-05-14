@@ -24,7 +24,6 @@
 
 void CTestOutputs::run ( )
 {
-   int sta=0;
    CBringupUserInput input( 'y', 60 );
 
    for (int i1=0; i1<m_outputCount; i1++)

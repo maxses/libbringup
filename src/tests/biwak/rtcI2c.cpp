@@ -25,7 +25,6 @@
 void CTestI2cRtc::run( )
 {
    CI2cRtc i2cRtc( m_i2c );
-   int sta=0;
    int hour, min, sec;
    int year, month, day;
    int stamp1, stamp2, diff;

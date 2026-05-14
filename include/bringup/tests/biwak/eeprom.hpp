@@ -21,6 +21,7 @@
 
 
 #include <bringup/bringup.hpp>
+#include <biwak/flash.h>
 
 
 /*--- Declaration ----------------------------------------------------------*/

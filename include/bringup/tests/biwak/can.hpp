@@ -31,7 +31,7 @@ class CTestCan: public CSubject
          : CSubject("CAN")
          ,m_can( can )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

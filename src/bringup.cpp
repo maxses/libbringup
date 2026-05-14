@@ -17,6 +17,12 @@
 
 #include <bringup/bringup.hpp>
 
+#if ! defined( STM32 )
+   #include <termios.h>
+   #include <errno.h>
+   #include <fcntl.h>
+#endif
+
 
 /*--- Implementation -------------------------------------------------------*/
 
