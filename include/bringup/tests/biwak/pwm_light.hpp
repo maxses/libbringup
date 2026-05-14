@@ -32,7 +32,7 @@ class CTestPwmLight: public CSubject
          : CSubject("PWM (light)")
          , m_pwmLine( pwmLine )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

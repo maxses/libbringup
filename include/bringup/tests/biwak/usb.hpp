@@ -36,7 +36,7 @@ class CTestUsb: public CSubject
          : CSubject("USB")
          ,m_usb( usb )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

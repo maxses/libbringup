@@ -32,7 +32,7 @@ class CTestUart: public CSubject
          : CSubject( "UART" )
          ,m_uart( uart )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

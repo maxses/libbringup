@@ -22,7 +22,7 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestFlashIntern::run( )
+void CTestFlashIntern::run( )
 {
    int sta=0;
    uint32_t patterns[]
@@ -99,12 +99,13 @@ int CTestFlashIntern::run( )
    if(sta)
    {
       printf("Error in page at: %p\n", start);
+      testFatal("Err", (int)start);
    }
 
    //flash.writeData( flash.flashEnd()-2, &zero, 2 );
    //sta=testAssert( "End", *end == 0x12345678, *end );
 
-   return(sta);
+   return;
 }
 
 

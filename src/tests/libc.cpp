@@ -20,18 +20,17 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestLibc::run( )
+void CTestLibc::run( )
 {
-   int sta=0;
    int value;
 
    value=strtol("15956", nullptr, 10);
-   sta=testAssert("Libc strtol 15956", value == 15956, value);
+   testAssert("Libc strtol 15956", value == 15956, value);
 
    int size=0x4;
    void *ptr=nullptr;
 
-   sta=testAssert( "malloc <size>", (ptr=malloc(size))  != 0, 0 );
+   testAssert( "malloc <size>", (ptr=malloc(size))  != 0, 0 );
    if(ptr)
    {
       #if ! CONFIG_NO_FREE
@@ -39,7 +38,7 @@ int CTestLibc::run( )
       #endif
    }
 
-   return(sta);
+   return;
 }
 
 

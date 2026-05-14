@@ -41,7 +41,7 @@ class CTestButton: public CSubject
       {
          printf("\nButton: %s\n", name);
       };
-      virtual int run() override;
+      virtual void run() override;
       bool getValue() const;
 };
 

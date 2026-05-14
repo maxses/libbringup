@@ -40,7 +40,7 @@ class CTestTouch: public CSubject
          ,m_touch( touch )
          ,m_display( display )
       { };
-      virtual int run() override;
+      virtual void run() override;
       void slotEvent( const CTouch::SEvent& );
 };
 

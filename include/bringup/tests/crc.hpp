@@ -32,7 +32,7 @@ class CTestCrc: public CSubject
          : CSubject("Crc")
       {
       };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

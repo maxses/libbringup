@@ -45,7 +45,7 @@ class CTestStack: public CSubject
          }
          #endif
       };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

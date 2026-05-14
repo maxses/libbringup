@@ -39,7 +39,7 @@ class CTestPwmBuzzer: public CSubject
          , m_bo( &pwmLine )
       #endif
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

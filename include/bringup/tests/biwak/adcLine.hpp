@@ -37,7 +37,7 @@ class CTestAdcLine: public CSubject
          ,m_min(min)
          ,m_max(max)
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

@@ -23,9 +23,8 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestTouch::run( )
+void CTestTouch::run( )
 {
-   int sta=0;
    m_x0=32;
    m_y0=320-32-64;
    m_x1=32+64;
@@ -51,7 +50,8 @@ int CTestTouch::run( )
    }
    testAssert( "Touch pressed in correct position", m_rectPressed, m_rectPressed );
    m_display.clear();
-   return(sta);
+   
+   return;
 }
 
 

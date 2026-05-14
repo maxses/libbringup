@@ -21,9 +21,8 @@
 /*--- Declaration ----------------------------------------------------------*/
 
 
-int CTestUart::run( )
+void CTestUart::run( )
 {
-   int sta=0;
    const char* text="Test UART.\n\rPress 't'\n\r";
    m_uart.write( text, strlen(text) );
    CBringupUserInput input( 't', 20);
@@ -37,9 +36,9 @@ int CTestUart::run( )
    {
    };
 
-   sta=testAssertZero("Uart read", input.result());
+   testAssertZero("Uart read", input.result());
 
-   return(sta);
+   return;
 }
 
 

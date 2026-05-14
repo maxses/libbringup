@@ -34,7 +34,7 @@ class CTestQSpiFlash: public CSubject
          : CSubject("SPI-Flash")
          ,m_qspi( qspi )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

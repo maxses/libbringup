@@ -24,6 +24,7 @@
 const char *errorStr="\033[91mError\e[39m\n";
 const char *okStr="\e[92mOk\e[39m\n";
 
+
 CSubject::CSubject( const char *topic )
    :m_topic(topic)
 {
@@ -31,31 +32,58 @@ CSubject::CSubject( const char *topic )
    return;
 }
 
-int CSubject::testAssert(const char *test, bool assertion, int value, EResult eResult /*=EResult::failed*/ )
+
+void CSubject::testAssert(const char *test, bool assertion, int value, EResult eResult /*=EResult::failed*/ )
 {
    m_pResults->push_back( CResult(this, test, ( assertion ? EResult::ok : eResult), value  ) );
-   return( assertion ? 0 : -1 );
+   return;
 }
 
-int CSubject::testAssertZero(const char *test, int value)
+
+void CSubject::testAssertZero(const char *test, int value)
 {
-   return( testAssert(test, value==0, value) );
+   testAssert(test, value==0, value);
+   return;
 }
 
-int CSubject::testAssertSilent(const char *test, bool assertion, int value)
+
+void CSubject::testAssertSilent(const char *test, bool assertion, int value)
 {
    if(!assertion)
    {
-      return( testAssert( test, assertion, value) );
+      testAssert( test, assertion, value);
    }
-   return(0);
+   return;
 }
 
-int CSubject::testInfo(const char *test, int value)
+
+void CSubject::testInfo(const char *test, int value)
 {
    m_pResults->push_back( CResult( this, test, EResult::info, value  ) );
 
-   return( 0 );
+   return;
+}
+
+
+void CSubject::testFatal( const char *test, int value )
+{
+   m_pResults->push_back( CResult(this, test, EResult::failed, value ) );
+   return;
+}
+
+
+void CSubject::hintAffirmed(const char* text)
+{
+   int c;
+   
+   printf("%s\n", text);
+   printf("Press any key to continue.\n");
+   
+   while( ( c = getc(stdin) ) < 0 )
+   {
+      
+   }
+   return;
 }
 
 

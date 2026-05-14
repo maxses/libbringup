@@ -23,10 +23,8 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestUsb::run ( )
+void CTestUsb::run( )
 {
-   int sta=0;
-
    #if defined(USE_USB)
    CUsbDevice *usbDevice;
    CUsbClass *hid;
@@ -66,7 +64,7 @@ int CTestUsb::run ( )
    testAssert("Virtual Keyboard", !strcmp(buf, "usb"), strlen(buf));
    #endif
 
-   return(sta);
+   return;
 }
 
 

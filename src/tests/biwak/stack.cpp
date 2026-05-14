@@ -25,10 +25,8 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestStack::run()
+void CTestStack::run()
 {
-   int sta=0;
-
    #if defined STM32
    int cnt=0;
    char *bp=&_user_stack;
@@ -39,10 +37,10 @@ int CTestStack::run()
       bp++;
    }
 
-   sta=testAssert( "Stack clean", cnt > 8, cnt );
+   testAssert( "Stack clean", cnt > 8, cnt );
    #endif
 
-   return(sta);
+   return;
 }
 
 

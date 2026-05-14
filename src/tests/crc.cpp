@@ -23,11 +23,10 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestCrc::run()
+void CTestCrc::run()
 {
    // Can be checked on https://crccalc.com/
 
-   int sta;
    const char *data1="Hell";
    const char *data2="o Wo";
    const char *data3="rld!";
@@ -50,16 +49,16 @@ int CTestCrc::run()
       #if ! ARENA_USE_CRC
          // Hardware-CRC is not used on this board
          printf("Error: Hardware CRC is not used\n");
-         return(-1);
+         return;
       #endif
    #endif // ? STM32
 
    // "https://crccalc.com/?crc=HelloWorld!&method=CRC-32&datatype=ascii&outtype=hex"
 
    #if defined STM32F1
-      sta=testAssert( "CRC32 v1", crc == 0x94E58351, crc );
+      testAssert( "CRC32 v1", crc == 0x94E58351, crc );
    #else
-      sta=testAssert( "CRC32 v1", crc == 0x1C291CA3, crc );
+      testAssert( "CRC32 v1", crc == 0x1C291CA3, crc );
    #endif
 
    #endif
@@ -74,9 +73,9 @@ int CTestCrc::run()
     */
    crc=calcCrc32(data4, 8);
    #if defined STM32F1
-      sta=testAssert( "CRC32 v2", crc == 0x49E3C2FB, crc );
+      testAssert( "CRC32 v2", crc == 0x49E3C2FB, crc );
    #else
-      sta=testAssert( "CRC32 v2", crc == 0x9ae0daaf, crc );
+      testAssert( "CRC32 v2", crc == 0x9ae0daaf, crc );
    #endif
 
    //---------------------------------
@@ -92,12 +91,12 @@ int CTestCrc::run()
 
    crc=calcCrc32(data5, sizeof(data5) );
    #if defined STM32F1
-      sta=testAssert( "CRC32 v3", crc == 0xECB85B93, crc );
+      testAssert( "CRC32 v3", crc == 0xECB85B93, crc );
    #else
-      sta=testAssert( "CRC32 v3", crc == 0x90DEC74A, crc );
+      testAssert( "CRC32 v3", crc == 0x90DEC74A, crc );
    #endif
 
-   return(sta);
+   return;
 }
 
 

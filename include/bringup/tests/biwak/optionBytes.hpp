@@ -35,7 +35,7 @@ class CTestOptionBytes: public CSubject
           , m_optionBytes( optionBytes )
       {
       };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

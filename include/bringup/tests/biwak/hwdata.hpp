@@ -41,7 +41,7 @@ class CTestHwData: public CSubject
          ,m_major(major)
          ,m_minor(minor)
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

@@ -21,16 +21,15 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestAdcLine::run( )
+void CTestAdcLine::run( )
 {
-   int sta=0;
 
    int value=m_adcLine.getAdcValue();
    printf("ADC-Value: %d; / %d mV\n", value, ( value * 3000 ) / 4095 );
 
-   sta=testAssert("ADC value range", ( value >= m_min ) && ( value <= m_max ), value );
+   testAssert("ADC value range", ( value >= m_min ) && ( value <= m_max ), value );
 
-   return(sta);
+   return;
 }
 
 

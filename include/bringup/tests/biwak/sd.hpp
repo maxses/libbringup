@@ -33,7 +33,7 @@ class CTestSd: public CSubject
          : CSubject("SD")
          ,m_sd( sd )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

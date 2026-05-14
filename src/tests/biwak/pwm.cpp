@@ -21,7 +21,7 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestPwmBuzzer::run( )
+void CTestPwmBuzzer::run( )
 {
    CBringupUserInput input( 'y', 20);
 
@@ -48,7 +48,7 @@ int CTestPwmBuzzer::run( )
       printf("Done.\n");
    #endif
 
-   return(0);
+   return;
 }
 
 

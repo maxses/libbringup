@@ -37,7 +37,7 @@ class CTestRtc: public CSubject
          : CSubject("RTC")
          ,m_rtc( rtc )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

@@ -33,7 +33,7 @@ class CTestI2cRtc: public CSubject
          : CSubject("I2C-RTC")
          ,m_i2c( i2c )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

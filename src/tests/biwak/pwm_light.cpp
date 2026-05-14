@@ -21,7 +21,7 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestPwmLight::run( )
+void CTestPwmLight::run( )
 {
    CBringupUserInput input( 'y', 20);
    static constexpr CBarrelOrgan::SSlope fadeOut [] =
@@ -42,7 +42,7 @@ int CTestPwmLight::run( )
       testAssertZero( "confirmation", input.result() );
    #endif
 
-   return(0);
+   return;
 }
 
 

@@ -43,7 +43,7 @@ class CTestOutputs: public CSubject
          , m_outputCount(count)
          //, m_outputsString(10)
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

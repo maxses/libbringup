@@ -29,7 +29,7 @@ class CTestFlashIntern: public CSubject
       CTestFlashIntern( )
          : CSubject("Intern flash")
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

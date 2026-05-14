@@ -84,11 +84,12 @@ CBringup::CBringup( int tests /*=18*/, int results /*=24*/ )
    #endif
 }
 
-int CBringup::addTest( CSubject *issue)
+void CBringup::addTest( CSubject *issue)
 {
    m_tests << issue;
    issue->setResultList( &m_results );
-   return( issue->run() );
+   issue->run();
+   return;
 }
 
 #if 0
@@ -142,20 +143,6 @@ bool CBringupUserInput::loop()
 int CBringupUserInput::result() const
 {
    return(m_result);
-}
-
-int CSubject::hintAffirmed(const char* text)
-{
-   int c;
-   
-   printf("%s\n", text);
-   printf("Press any key to continue.\n");
-   
-   while( ( c = getc(stdin) ) < 0 )
-   {
-      
-   }
-   return(0);
 }
 
 

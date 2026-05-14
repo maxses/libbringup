@@ -32,7 +32,7 @@ class CBringup
 
    public:
       CBringup( int tests = 18, int results = 24 );
-      int addTest( CSubject *issue);
+      void addTest( CSubject *issue);
       const CList<const CSubject *> &tests() const {return(m_tests);};
       const CList<CResult> &results() const {return(m_results);};
 };

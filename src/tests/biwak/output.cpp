@@ -22,7 +22,7 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestOutputs::run ( )
+void CTestOutputs::run ( )
 {
    int sta=0;
    CBringupUserInput input( 'y', 60 );
@@ -59,9 +59,9 @@ int CTestOutputs::run ( )
    m_outputs[m_outputPos].o.switchOff();
 
    m_outputsString += ":Conf.";
-   sta=testAssertZero( m_outputsString.data(), input.result() );
+   testAssertZero( m_outputsString.data(), input.result() );
 
-   return(sta);
+   return;
 }
 
 

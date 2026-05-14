@@ -99,9 +99,8 @@ void CTestGraphicDisplay::test_text_bgr(int x1, int y1, int x2, int y2)
 };
 
 
-int CTestGraphicDisplay::run ( )
+void CTestGraphicDisplay::run ( )
 {
-   int sta=0;
    CBringupUserInput input( 'y', 20);
 
    SFunc functions[]{
@@ -142,7 +141,7 @@ int CTestGraphicDisplay::run ( )
    {}
    testAssertZero( "confirmation", input.result() );
 
-   return(sta);
+   return;
 }
 
 

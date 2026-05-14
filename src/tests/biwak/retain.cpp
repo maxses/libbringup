@@ -23,9 +23,9 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestRetain::run( )
+void CTestRetain::run( )
 {
-   int sta=0,sta2, container;
+   int sta=0, container;
    static char data[0x80];
 
    struct SEepromHwData
@@ -67,7 +67,7 @@ int CTestRetain::run( )
    container = m_pRetain2->store();
    //lInfo("Data size store: %d", m_pRetain2->getSize() );
 
-   sta2=testAssert( "Store", container >= 0, container );
+   testAssert( "Store", container >= 0, container );
 
 #if 0
 #if ! defined( NDEBUG )
@@ -81,13 +81,13 @@ int CTestRetain::run( )
 #if 1
    data2.reserved[0]=0xEE;
    container = m_pRetain2->restore();
-   sta2=testAssert( "Restore", container >= 0, container );
+   testAssert( "Restore", container >= 0, container );
    printf("Res Cont: 0x%X", container);
 
    biwakEventLoop();
    //lInfo("Data size restore: %d", m_pRetain2->getSize() );
 
-   sta2=testAssert( "Data", data2.reserved[0]==0xAA, data2.reserved[0] );
+   testAssert( "Data", data2.reserved[0]==0xAA, data2.reserved[0] );
 
    #if 0
    hexDump( &data2, sizeof(data2));
@@ -95,7 +95,7 @@ int CTestRetain::run( )
 
 #endif
 
-   return(sta2);
+   return;
 }
 
 

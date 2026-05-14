@@ -21,7 +21,7 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestOptionBytes::run()
+void CTestOptionBytes::run()
 {
    int sta=0;
    uint8_t byte0;
@@ -31,26 +31,26 @@ int CTestOptionBytes::run()
 #if 1
    ( sta = m_optionBytes.writeByte(0, 0x77 ) ) ||
    ( sta = m_optionBytes.writeByte(1, 0xAA ) );
-   sta=testAssert( "Status", sta == 0x0, sta );
+   testAssert( "Status", sta == 0x0, sta );
 
    byte0=m_optionBytes.readByte(0);
    byte1=m_optionBytes.readByte(1);
 
-   sta=testAssert( "Byte0 L0", byte0 == (uint8_t)0x77, byte0 );
-   sta=testAssert( "Byte1 L0", byte1 == (uint8_t)0xAA, byte1 );
+   testAssert( "Byte0 L0", byte0 == (uint8_t)0x77, byte0 );
+   testAssert( "Byte1 L0", byte1 == (uint8_t)0xAA, byte1 );
 
    ( sta = m_optionBytes.writeByte(0, 0xCD ) ) ||
    ( sta = m_optionBytes.writeByte(1, 0xEF ) );
-   sta=testAssert( "Status", sta == 0x0, sta );
+   testAssert( "Status", sta == 0x0, sta );
 
    byte0=m_optionBytes.readByte(0);
    byte1=m_optionBytes.readByte(1);
 
-   sta=testAssert( "Byte0 L0", byte0 == (uint8_t)0xCD, byte0 );
-   sta=testAssert( "Byte1 L0", byte1 == (uint8_t)0xEF, byte1 );
+   testAssert( "Byte0 L0", byte0 == (uint8_t)0xCD, byte0 );
+   testAssert( "Byte1 L0", byte1 == (uint8_t)0xEF, byte1 );
 #endif
 
-   return(sta);
+   return;
 }
 
 

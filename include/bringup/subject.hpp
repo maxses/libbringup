@@ -31,16 +31,17 @@ class CSubject
 
    public:
       CSubject(const char *topic);
-      virtual int run() = 0;
+      virtual void run() = 0;
       const char *getTopic() const
          {return(m_topic);};
       const CList <CResult> &results() const
          { return( *m_pResults ); };
-      int testAssert(const char *test, bool assertion, int value, EResult eResult=EResult::failed);
-      int testAssertZero(const char *test, int value);
-      int testAssertSilent(const char *test, bool assertion, int value);
-      int testInfo(const char *test, int value);
-      int hintAffirmed(const char* text);
+      void testAssert(const char *test, bool assertion, int value, EResult eResult=EResult::failed);
+      void testAssertZero(const char *test, int value);
+      void testAssertSilent(const char *test, bool assertion, int value);
+      void testInfo( const char *test, int value );
+      void testFatal( const char *test, int value );
+      void hintAffirmed( const char* text );
       void setResultList( CList <CResult>* results )
       {
          m_pResults=results;

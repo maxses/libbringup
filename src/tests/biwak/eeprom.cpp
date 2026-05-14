@@ -27,7 +27,7 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestI2cEeprom::run( )
+void CTestI2cEeprom::run( )
 {
    int sta=0;
    int startAddress = m_eeprom.getStartAddress() + 0x40; // Try not to destroy HwData
@@ -51,16 +51,18 @@ int CTestI2cEeprom::run( )
       pageSize=8;
    }
 
-   if( pageSize >=0x20 )
+   if( pageSize >= 0x20 )
    {
       printf("Page size too high; not implemented\n");
-      return( -1 );
+      testFatal("Page size too high", 0x20 );
+      return;
    }
 
    if( testAreaSize > sizeof(_new) )
    {
       printf("Random data too small\n");
-      return( -1 );
+      testFatal("Random data too small", 0x0 );
+      return;
    }
 
    // Read original data to restore it
@@ -112,14 +114,15 @@ int CTestI2cEeprom::run( )
 
    sta+=m_eeprom.writeData( startAddress + (pageSize/2) + pageSize
                                , &_new[(pageSize/2)+ pageSize], pageSize/2);
-   sta=testAssert("write", (sta==0), sta);
+   testAssert("write", (sta==0), sta);
 
    sta=m_eeprom.readData( startAddress, &readback, sizeof(readback));
-   sta=testAssert("read 1", (sta==0), sta);
+   testAssert("read 1", (sta==0), sta);
 
    // Not all "testAreaSize" may be written.
    comp=memcmp(_new, readback, pageSize * 2 );
-   if( ( sta=testAssert("comp", (comp==0), comp) ) )
+   testAssert("comp", (comp==0), comp);
+   if( comp )
    {
       printf( "Written:\n" );
       hexDump(_new, pageSize * 2);
@@ -128,7 +131,7 @@ int CTestI2cEeprom::run( )
    }
 
    sta=m_eeprom.writeData( startAddress, &origin, testAreaSize );
-   sta=testAssert("write 2", (sta==0), sta);
+   testAssert("write 2", (sta==0), sta);
    
    // Data at 0x0 is not the same as on 0x80; only valid test for
    // 128Byte EEPROMs
@@ -136,7 +139,7 @@ int CTestI2cEeprom::run( )
    //sta=testAssert("rw (value@0)", (readBack2!=_new), readBack2, EResult::warning);
    (void)sta;
    
-   return(sta);
+   return;
 }
 
 

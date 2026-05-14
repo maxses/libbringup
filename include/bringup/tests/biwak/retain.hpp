@@ -36,7 +36,7 @@ class CTestRetain: public CSubject
          : CSubject("Retain")
          ,m_pI2cFlash( i2c )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

@@ -21,10 +21,8 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestQSpiFlash::run( )
+void CTestQSpiFlash::run( )
 {
-   int sta=0;
-
    //printf( "Id: 0x%X\n", m_qspi );
 #if 0
    printf( "Jedec-Id: 0x%X\n", m_flash.readJId() );
@@ -36,7 +34,7 @@ int CTestQSpiFlash::run( )
    sta=testAssert( "Size", ( m_flash.size() > 0 ) && ( m_flash.size() < 0x40000000 ), m_flash.size() );
    sta=testInfo( "Size (Bytes)", m_flash.size() );
 #endif
-   return(sta);
+   return;
 }
 
 

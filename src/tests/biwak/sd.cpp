@@ -23,7 +23,7 @@
 
 #if !defined (STM32F0) && !defined (STM32F3)
 
-int CTestSd::run()
+void CTestSd::run()
 {
    int sta=0;
    typedef uint8_t sector[0x200];
@@ -94,7 +94,7 @@ int CTestSd::run()
    }
    fputs("\n", stdout);
 
-   sta=testAssert( "SD write/read/erase", err == 0, err );
+   testAssert( "SD write/read/erase", err == 0, err );
 
 
    /* When speed is too high, words might get swapped around when reading.
@@ -123,9 +123,9 @@ int CTestSd::run()
    fputs("\n", stdout);
 
 
-   sta=testAssert( "SD read loop", err == 0, err );
+   testAssert( "SD read loop", err == 0, err );
 
-   return(sta);
+   return;
 }
 
 #endif

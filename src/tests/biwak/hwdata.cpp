@@ -23,9 +23,9 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestHwData::run( )
+void CTestHwData::run( )
 {
-   int sta=0,sta2;
+   int sta=0;
    struct SEepromHwData
    {
       SEepromBoardInfo boardInfo;
@@ -34,8 +34,8 @@ int CTestHwData::run( )
 
    //SEepromHwData *hwData=(SEepromHwData *)m_data;
    sta = m_pRetain->restore();
-   sta2=testAssert( "Restore", sta >= 0, sta );
-   return(sta2);
+   testAssert( "Restore", sta >= 0, sta );
+   return;
 }
 
 

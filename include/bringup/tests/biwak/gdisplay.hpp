@@ -46,7 +46,7 @@ class CTestGraphicDisplay: public CSubject
          : CSubject("Graphic display")
          , m_display(display)
       { };
-      virtual int run() override;
+      virtual void run() override;
       void test_hline(int x1, int y1, int x2, int y2);
       void test_vline(int x1, int y1, int x2, int y2);
       void test_circle(int x1, int y1, int x2, int y2);

@@ -27,9 +27,9 @@ bool CTestButton::getValue() const
 };
 
 
-int CTestButton::run( )
+void CTestButton::run( )
 {
-   int sta=0;
+   //int sta=0;
    bool finished=false;
    lrtimer_t timer;
    enum
@@ -59,13 +59,14 @@ int CTestButton::run( )
             {
                eState=eGoWaitPressed;
             }
-            if( ( sta=testAssertSilent("Value stays low", getValue() == false, getValue()) ) )
+            testAssertSilent("Value stays low", getValue() == false, getValue());
+            if( !( getValue() == false ) )
             {
                eState=eEnd;
             }
             break;
          case (eGoWaitPressed):
-            sta=testAssert("Value is low in idle", getValue() == false, getValue());
+            testAssert("Value is low in idle", getValue() == false, getValue());
             printf("Now press the button/input %s\n",
                    (m_mode==EMode::eButton) ? "and hold it good." : "and release it."
                                               );
@@ -74,13 +75,13 @@ int CTestButton::run( )
          case (eWaitPressed):
             if( lrElapsedSeconds( &timer, 10) )
             {
-               sta=testAssert("Value did not get high", false, getValue());
+               testAssert("Value did not get high", false, getValue());
                eState=eEnd;
             }
             else if ( getValue() )
             {
                timer=lrNow();
-               sta=testAssert("Value did get high", getValue() == true, getValue());
+               testAssert("Value did get high", getValue() == true, getValue());
                printf("Good job! %s\n",
                       ( m_mode==EMode::eButton ) ? "Hold it pressed." : "");
                eState=eWaitHigh;
@@ -99,8 +100,8 @@ int CTestButton::run( )
             }
             else
             {
-               sta=testAssertSilent("Value stays high", getValue()==true, getValue());
-               if(sta)
+               testAssertSilent("Value stays high", getValue()==true, getValue());
+               if( !( getValue()==true ) )
                {
                   printf("Done. Value did not stay high\n");
                   eState=eEnd;
@@ -111,12 +112,12 @@ int CTestButton::run( )
             finished=true;
             break;
          default:
-            sta=testAssert("Invalid State", 0, eState);
+            testAssert("Invalid State", 0, eState);
             break;
       }
    }
 
-   return(sta);
+   return;
 }
 
 

@@ -32,7 +32,7 @@ class CTestSpiFlash: public CSubject
          : CSubject("SPI-Flash")
          ,m_flash( flash )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 

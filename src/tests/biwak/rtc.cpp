@@ -26,12 +26,12 @@
 /*--- Implementation -------------------------------------------------------*/
 
 
-int CTestRtc::run( )
+void CTestRtc::run( )
 {
    int year, month, day;
    int hour, minute, second;
    int secs1, secs2, diff;
-   int sta=0;
+   //int sta=0;
    extern uint32_t __heap_end;
 
    // Catch the word right before the stack. Biwak will overwrite the lower end
@@ -52,8 +52,8 @@ int CTestRtc::run( )
          {
             *preStackPointer=0xFEFEFEFE;
             printf("Date still valid. Serious problem.\n");
-            sta=testAssert( "set RTC", false, 0 );
-            return(sta);
+            testAssert( "set RTC", false, 0 );
+            return;
          }
          *preStackPointer=0x12345678;
          systemReset();
@@ -61,7 +61,7 @@ int CTestRtc::run( )
    }
 
    m_rtc.getDate( year, month, day );
-   sta=testAssert( "RTC Year", (year >= 2017) && (year <= 2040), year );
+   testAssert( "RTC Year", (year >= 2017) && (year <= 2040), year );
 
    m_rtc.getTime(hour, minute, second);
    secs1= second + ( ( minute + ( hour * 60 ) ) *60);
@@ -70,9 +70,9 @@ int CTestRtc::run( )
    secs2= second + ( ( minute + ( hour * 60 ) ) *60);
    diff = secs2 - secs1;
 
-   sta=testAssert( "RTC diff", (abs(diff)>=2), diff );
+   testAssert( "RTC diff", (abs(diff)>=2), diff );
 
-   return(sta);
+   return;
 }
 
 

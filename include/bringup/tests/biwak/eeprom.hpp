@@ -36,7 +36,7 @@ class CTestI2cEeprom: public CSubject
          : CSubject( "I2C-EEPROM" )
          ,m_eeprom( flashI2c )
       { };
-      virtual int run() override;
+      virtual void run() override;
 };
 
 
