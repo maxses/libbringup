@@ -16,40 +16,6 @@
 
 
 #include <bringup/bringup.hpp>
-#include <biwak/flash_spi.hpp>
-#include <biwak/led.hpp>
-#if defined(STM32G4)
-   #include <biwak/fdcan.hpp>
-   #define USE_CAN
-   #define CCan CFDCan
-#else
-   #if ( ! defined ( STM32L0 ) ) && ( ! defined ( STM32L1 ) )
-      #include <biwak/can.hpp>
-      #define USE_CAN
-   #endif
-#endif
-#include <biwak/rtc.hpp>
-//#include <stm/stm32_cortex.h>    // reset
-#include <biwak/flash_i2c.hpp>
-#include <biwak/uart.hpp>
-#include <biwak/pwm.hpp>
-//#include <lepto/time.hpp>
-#include <biwak/input.hpp>
-#include <biwak/adc.hpp>
-#include <biwak/adc_line.hpp>
-#include <biwak/gdisplay.h>
-#if defined (USE_USB)
-   #include <biwak/usb.hpp>
-   #include <biwak/usb_class.h>
-   #include <biwak/usb_device.h>
-#endif
-#include <biwak/sysTimer.hpp>
-
-#if defined ( HOST )  || ! defined( STM32 )
-   #include <termios.h>       // tcgetattr
-   #include <errno.h>         // errno
-   #include <fcntl.h>         // fcntl
-#endif
 
 
 /*--- Implementation -------------------------------------------------------*/
