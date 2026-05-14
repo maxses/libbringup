@@ -55,7 +55,7 @@ void CBringupWriter::printSoftwareInfo() const
       tableHeader("Revisions","");
    #endif
 
-   tableRow("Bringup", INFO( ));
+   tableRow(GIT_PROJECT, INFO( ));
 
    #if defined GIT_REV_libbringup
       tableRow("libbringup", INFO(_libbringup) );
