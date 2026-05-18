@@ -9,8 +9,9 @@ cmake_minimum_required(VERSION 3.11)
 
 project( bringup )
 
+find_package( Lepto REQUIRED )
 # Is shipped by liblepto
-find_package(GitVersion REQUIRED)
+find_package( GitVersion REQUIRED )
 
 set(
    SOURCES
