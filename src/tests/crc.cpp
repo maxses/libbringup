@@ -18,6 +18,7 @@
 
 #include <bringup/tests/crc.hpp>
 #include <lepto/crc32.h>
+#include <arena_app.h>
 
 
 /*--- Implementation -------------------------------------------------------*/
@@ -42,6 +43,7 @@ void CTestCrc::run()
    crc=crc32Update(crc, data2, strlen(data2));
    crc=crc32Update(crc, data3, strlen(data3));
    crc=crc32Finalize(crc);
+   lInfo("CRC=0x%X", crc);
 
    #if defined ( STM32 )
       // The lepto functions are tested because thats what used in e.g. retain.
@@ -49,6 +51,7 @@ void CTestCrc::run()
       #if ! ARENA_USE_CRC
          // Hardware-CRC is not used on this board
          printf("Error: Hardware CRC is not used\n");
+         testAssert( "CRC32 HW", 1 == 2, crc );
          return;
       #endif
    #endif // ? STM32
