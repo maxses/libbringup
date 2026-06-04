@@ -40,19 +40,14 @@ void CBringupWriterText::tableHeader(const char *desc, const char *value) const
    return;
 }
 
-void CBringupWriterText::tableRow(const char *desc, const char *value, int result) const
+void CBringupWriterText::tableRow(const char *desc, const char *value) const
 {
       printf("   %s:", desc);
       for(unsigned int i1=0; i1 < (40-strlen(desc)); i1++)
       {
          fputc('.', stdout);
       }
-      printf("%s", value);
-      if(result)
-      {
-         printf( " (%d)", result );
-      }
-      printf("\n");
+      printf("%s\n", value);
 
       return;
 }

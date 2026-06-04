@@ -40,13 +40,9 @@ void CBringupWriterMd::tableHeader(const char *desc, const char *value) const
 }
 
 
-void CBringupWriterMd::tableRow(const char *desc, const char *value, int result) const
+void CBringupWriterMd::tableRow(const char *desc, const char *value) const
 {
    printf( "| %s | %s", desc, value);
-   if(result)
-   {
-      printf(" (0x%x)", result);
-   }
    printf( "|\n");
 
    return;

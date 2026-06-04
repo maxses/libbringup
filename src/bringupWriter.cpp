@@ -94,15 +94,14 @@ void CBringupWriter::printProtocoll() const
         {
            if(result.getResult()==EResult::info)
            {
-              char buf[10];
-              snprintf( buf, 10, "%d", result.value() );
-              tableRow( result.getTestString(), buf, 0 );
+              //char buf[10];
+              //snprintf( buf, 10, "%d", result.value() );
+              tableRow( result.getTestString(), "?" );
            }
            else
            {
-               tableRow(result.getTestString(), resultStrings[ (int)result.getResult() ]
-                 , (int)result.value()
-                 );
+               tableRow(result.getTestString(),
+                        resultStrings[ (int)result.getResult() ] );
            }
            counter[ (int)result.getResult() ]++;
         }

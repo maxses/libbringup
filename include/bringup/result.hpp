@@ -34,20 +34,17 @@ private:
 
    const char *m_testString;
    EResult m_eResult;
-   int m_value;
    const CSubject* m_pSubject;
 
 public:
    CResult(  )
       :m_testString(nullptr)
-      ,m_value( 0 )
       ,m_pSubject( 0 )
    {
    };
    CResult(const CSubject* subject, const char *testString, EResult eResult, int value)
       :m_testString( testString )
       ,m_eResult( eResult )
-      ,m_value( value )
       ,m_pSubject( subject )
    {};
    const char *getTestString() const
@@ -57,10 +54,6 @@ public:
    const EResult getResult() const
    {
       return( m_eResult );
-   }
-   int value() const
-   {
-      return (m_value);
    }
    bool belongsTo(const CSubject* subject) const
    {

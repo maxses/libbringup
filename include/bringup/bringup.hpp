@@ -49,7 +49,7 @@ class CBringupWriter
       void printSoftwareInfo() const;
       virtual void printHeader(const char *text) const =0;
       virtual void tableHeader(const char *desc, const char *value) const =0;
-      virtual void tableRow(const char *desc, const char *value, int result=0) const =0;
+      virtual void tableRow(const char *desc, const char *value) const =0;
       virtual void tableRow(const char *desc, int value) const =0;
 };
 
@@ -62,7 +62,7 @@ class CBringupWriterText: public CBringupWriter
       {}
       virtual void printHeader(const char *text) const override;
       virtual void tableHeader(const char *desc, const char *value) const override;
-      virtual void tableRow(const char *desc, const char *value, int result=0) const override;
+      virtual void tableRow(const char *desc, const char *value) const override;
       virtual void tableRow(const char *desc, int value) const override;
 };
 
@@ -75,7 +75,7 @@ class CBringupWriterMd: public CBringupWriter
       {}
       virtual void printHeader(const char *text) const override;
       virtual void tableHeader(const char *desc, const char *value) const override;
-      virtual void tableRow(const char *desc, const char *value, int result=0) const override;
+      virtual void tableRow(const char *desc, const char *value) const override;
       virtual void tableRow(const char *desc, int value) const override;
 };
 
