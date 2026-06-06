@@ -28,10 +28,9 @@ void CTestRetain::run( )
    int sta=0, container;
    static char data[0x80];
 
-   struct SEepromHwData
+   struct SEepromHwData: SEepromHwInfoBase
    {
-      SEepromBoardInfo boardInfo;
-      char reserved[ 0x40 - 0xC - sizeof(SEepromBoardInfo) ];
+      char reserved[ 0x40 - 0xC - sizeof(SEepromHwInfoBase) ];
    } __attribute ((packed));
 
    struct SEepromConfig

@@ -26,9 +26,9 @@
 void CTestHwData::run( )
 {
    int sta=0;
-   struct SEepromHwData
+   struct SEepromHwData: SEepromHwInfoBase
    {
-      SEepromBoardInfo boardInfo;
+      //SEepromBoardInfo boardInfo;
       char reserved[ 0x20 ];
    } __attribute ((packed));
 
