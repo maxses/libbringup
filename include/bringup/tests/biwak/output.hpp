@@ -30,7 +30,7 @@ class CTestOutputs: public CSubject
 
    private:
       const SOutput *m_outputs;
-      unsigned int m_outputCount=0;
+      int m_outputCount=0;
       int m_outputPos=0;
       lrtimer_t m_outTimer=lrNow();
       CString m_outputsString;
