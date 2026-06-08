@@ -19,6 +19,7 @@
 
 #include <bringup/tests/biwak/can.hpp>
 #include <biwak/can.hpp>
+#include <lepto/units.h>
 
 
 /*--- Implementation -------------------------------------------------------*/
@@ -28,7 +29,7 @@ void CTestCan::run()
 {
    int sta=0;
 
-   #if defined ( USE_CAN )
+   #if defined ( USE_CAN ) || 1
    SCanMessage message;
    // canId can be 0 and 0x7FF for standard id. To be TDT compatible, use
    // function code "0xf" which is reserved for such tests and should be ignored
@@ -37,6 +38,7 @@ void CTestCan::run()
    int canLen=0x5;
    lrtimer_t startTime;
    SCanMessage *pMessage;
+   bool finished=false;
 
    message.setId(canId);
    message.setData(canLen, (const unsigned char *)"Hello");
@@ -50,30 +52,36 @@ void CTestCan::run()
 
    do{
       lDebug("Loop");
-      pMessage=m_can.m_rxBuffer.bottomEntry();
+      pMessage=m_can.m_rxBuffer.frontEntry();
       if(pMessage)
       {
+         printf( "[0x%X]\n", pMessage->getId() );
          lDebug("Message in: ID=0x%X, len=%d", pMessage->getId()
                         , pMessage->getLen());
          if( pMessage->getId() == canId + 0x10)
          {
-            sta=testAssert("CAN size from CANPong", pMessage->getLen() == canLen, pMessage->getLen());
-            sta=testAssert("CAN mirrored message from CANPong"
-                           , memcmp(pMessage->getData(), "olleH", 5)==0
+            testAssert("CAN size from CANPong", pMessage->getLen() == canLen, pMessage->getLen());
+            finished=memcmp(pMessage->getData(), "olleH", 5)==0;
+            testAssert("CAN mirrored message from CANPong"
+                           , finished
                            , pMessage->getId());
             lDebug("   Data: %s", pMessage->getData());
          }
-         m_can.m_rxBuffer.dropEntry();
+         else
+         {
+            printf("X\n");
+         }
+         m_can.m_rxBuffer.dropFront();
       }
 
-      if(sta)
+      if( ! finished )
       {
-         msleep(1000);
+         msleep(1);
       }
       biwakEventLoop();
-   }while( sta && ( lrElapsedMSeconds(startTime) < MSEC_PER_SEC * 1 ) );
+   }while( ( !finished ) && ( lrElapsedMSeconds(startTime) < MSEC_PER_SEC * 1 ) );
 
-   sta = testAssert("Received CAN message", sta == 0 , 0);
+   testAssert("Received CAN message", finished == true , 0);
    #endif
 
    return;
