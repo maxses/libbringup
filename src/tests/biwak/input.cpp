@@ -29,7 +29,7 @@ void CTestUart::run( )
 
    #if ! defined STM32
       // Pseudo-UART output is not seen on host
-      printf(text);
+      fputs(text, stdout);
    #endif
 
    while( input.loop() )

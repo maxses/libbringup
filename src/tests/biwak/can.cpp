@@ -55,7 +55,7 @@ void CTestCan::run()
       pMessage=m_can.m_rxBuffer.frontEntry();
       if(pMessage)
       {
-         printf( "[0x%X]\n", pMessage->getId() );
+         printf( "[0x%X]\n", (int)pMessage->getId() );
          lDebug("Message in: ID=0x%X, len=%d", pMessage->getId()
                         , pMessage->getLen());
          if( pMessage->getId() == canId + 0x10)
@@ -79,7 +79,7 @@ void CTestCan::run()
          msleep(1);
       }
       biwakEventLoop();
-   }while( ( !finished ) && ( lrElapsedMSeconds(startTime) < MSEC_PER_SEC * 1 ) );
+   }while( ( !finished ) && ( lrElapsedMSeconds(startTime) < (int)MSEC_PER_SEC * 1 ) );
 
    testAssert("Received CAN message", finished == true , 0);
    #endif
