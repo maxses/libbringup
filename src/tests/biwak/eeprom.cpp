@@ -53,21 +53,21 @@ void CTestI2cEeprom::run( )
 
    if( pageSize >= 0x20 )
    {
-      printf("Page size too high; not implemented\n");
-      testFatal("Page size too high", 0x20 );
+      printf( "Page size too high; not implemented\n" );
+      testFatal( "Page size too high" );
       return;
    }
 
    if( testAreaSize > sizeof(_new) )
    {
-      printf("Random data too small\n");
-      testFatal("Random data too small", 0x0 );
+      printf( "Random data too small\n" );
+      testFatal( "Random data too small" );
       return;
    }
 
    // Read original data to restore it
    sta=m_eeprom.readData( startAddress, &origin, testAreaSize);
-   testAssert("read", sta==0, sta);
+   testAssert("read", sta==0 );
    
    // Dont sleep; its not our job, CI2Flash has to take care about this
 
@@ -98,7 +98,7 @@ void CTestI2cEeprom::run( )
          sta++;
       }
    }
-   testAssert("zero ", sta==0, sta);
+   testAssert("zero ", sta==0 );
 
    /* Testing writing blocks crossing page boundaries. This has to be catched.
     *
@@ -114,14 +114,14 @@ void CTestI2cEeprom::run( )
 
    sta+=m_eeprom.writeData( startAddress + (pageSize/2) + pageSize
                                , &_new[(pageSize/2)+ pageSize], pageSize/2);
-   testAssert("write", (sta==0), sta);
+   testAssert("write", (sta==0) );
 
    sta=m_eeprom.readData( startAddress, &readback, sizeof(readback));
-   testAssert("read 1", (sta==0), sta);
+   testAssert("read 1", (sta==0) );
 
    // Not all "testAreaSize" may be written.
    comp=memcmp(_new, readback, pageSize * 2 );
-   testAssert("comp", (comp==0), comp);
+   testAssert("comp", (comp==0) );
    if( comp )
    {
       printf( "Written:\n" );
@@ -131,7 +131,7 @@ void CTestI2cEeprom::run( )
    }
 
    sta=m_eeprom.writeData( startAddress, &origin, testAreaSize );
-   testAssert("write 2", (sta==0), sta);
+   testAssert("write 2", (sta==0) );
    
    // Data at 0x0 is not the same as on 0x80; only valid test for
    // 128Byte EEPROMs

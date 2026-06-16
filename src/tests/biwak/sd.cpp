@@ -93,7 +93,7 @@ void CTestSd::run()
    }
    fputs("\n", stdout);
 
-   testAssert( "SD write/read/erase", err == 0, err );
+   testAssert( "SD write/read/erase", err == 0 );
 
 
    /* When speed is too high, words might get swapped around when reading.
@@ -122,7 +122,7 @@ void CTestSd::run()
    fputs("\n", stdout);
 
 
-   testAssert( "SD read loop", err == 0, err );
+   testAssert( "SD read loop", err == 0 );
 
    return;
 }

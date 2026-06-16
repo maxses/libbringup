@@ -47,7 +47,7 @@ void CTestCan::run()
    startTime=lrNow();
 
    sta=m_can.transmit(message);
-   testAssert("Transmit CAN message", sta==0 , 0);
+   testAssert("Transmit CAN message", sta==0 );
    sta=2;
 
    do{
@@ -60,11 +60,10 @@ void CTestCan::run()
                         , pMessage->getLen());
          if( pMessage->getId() == canId + 0x10)
          {
-            testAssert("CAN size from CANPong", pMessage->getLen() == canLen, pMessage->getLen());
+            testAssert("CAN size from CANPong", pMessage->getLen() == canLen );
             finished=memcmp(pMessage->getData(), "olleH", 5)==0;
             testAssert("CAN mirrored message from CANPong"
-                           , finished
-                           , pMessage->getId());
+                           , finished );
             lDebug("   Data: %s", pMessage->getData());
          }
          else
@@ -81,7 +80,7 @@ void CTestCan::run()
       biwakEventLoop();
    }while( ( !finished ) && ( lrElapsedMSeconds(startTime) < (int)MSEC_PER_SEC * 1 ) );
 
-   testAssert("Received CAN message", finished == true , 0);
+   testAssert("Received CAN message", finished == true );
    #endif
 
    return;

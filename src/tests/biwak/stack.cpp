@@ -37,7 +37,7 @@ void CTestStack::run()
       bp++;
    }
 
-   testAssert( "Stack clean", cnt > 8, cnt );
+   testAssert( "Stack clean", cnt > 8 );
    #endif
 
    return;

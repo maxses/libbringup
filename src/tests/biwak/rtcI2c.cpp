@@ -34,7 +34,7 @@ void CTestI2cRtc::run( )
    // Can the date actually be set or does it get lost
    i2cRtc.setDate( 2022, 5, 26 );
    i2cRtc.getDate( year, month, day );
-   testAssert( "I2C RTC Year", ( year == 2022 ) && ( month == 5 ) && ( day == 26 ), year );
+   testAssert( "I2C RTC Year", ( year == 2022 ) && ( month == 5 ) && ( day == 26 ) );
 
    // Just wait some seconds and check the time diff in the RTC to be plausible
    i2cRtc.getTime( hour, min, sec );
@@ -44,7 +44,7 @@ void CTestI2cRtc::run( )
    stamp2=sec + ( min * SEC_PER_MIN) + (hour * SEC_PER_HOUR);
 
    diff=stamp2-stamp1;
-   testAssert("diff", (diff>=2) && (diff<=3), diff);
+   testAssert("diff", (diff>=2) && (diff<=3) );
 
    return;
 }

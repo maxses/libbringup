@@ -36,11 +36,11 @@ class CSubject
          {return(m_topic);};
       const CList <CResult> &results() const
          { return( *m_pResults ); };
-      void testAssert(const char *test, bool assertion, int value, EResult eResult=EResult::failed);
+      void testAssert(const char *test, bool assertion, EResult eResult=EResult::failed);
       void testAssertZero(const char *test, int value);
-      void testAssertSilent(const char *test, bool assertion, int value);
-      void testInfo( const char *test, int value );
-      void testFatal( const char *test, int value );
+      void testAssertSilent(const char *test, bool assertion );
+      void testInfo( const char *test );
+      void testFatal( const char *test );
       void hintAffirmed( const char* text );
       void setResultList( CList <CResult>* results )
       {

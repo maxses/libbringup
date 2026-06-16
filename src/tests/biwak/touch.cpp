@@ -48,7 +48,7 @@ void CTestTouch::run( )
    {
       m_touch.eventLoop();
    }
-   testAssert( "Touch pressed in correct position", m_rectPressed, m_rectPressed );
+   testAssert( "Touch pressed in correct position", m_rectPressed == true );
    m_display.clear();
    
    return;

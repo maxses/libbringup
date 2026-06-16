@@ -33,41 +33,41 @@ CSubject::CSubject( const char *topic )
 }
 
 
-void CSubject::testAssert(const char *test, bool assertion, int value, EResult eResult /*=EResult::failed*/ )
+void CSubject::testAssert(const char *test, bool assertion, EResult eResult /*=EResult::failed*/ )
 {
-   m_pResults->push_back( CResult(this, test, ( assertion ? EResult::ok : eResult), value  ) );
+   m_pResults->push_back( CResult(this, test, ( assertion ? EResult::ok : eResult) ) );
    return;
 }
 
 
 void CSubject::testAssertZero(const char *test, int value)
 {
-   testAssert(test, value==0, value);
+   testAssert(test, value==0);
    return;
 }
 
 
-void CSubject::testAssertSilent(const char *test, bool assertion, int value)
+void CSubject::testAssertSilent(const char *test, bool assertion )
 {
    if(!assertion)
    {
-      testAssert( test, assertion, value);
+      testAssert( test, assertion );
    }
    return;
 }
 
 
-void CSubject::testInfo(const char *test, int value)
+void CSubject::testInfo(const char *test )
 {
-   m_pResults->push_back( CResult( this, test, EResult::info, value  ) );
+   m_pResults->push_back( CResult( this, test, EResult::info ) );
 
    return;
 }
 
 
-void CSubject::testFatal( const char *test, int value )
+void CSubject::testFatal( const char *test )
 {
-   m_pResults->push_back( CResult(this, test, EResult::failed, value ) );
+   m_pResults->push_back( CResult(this, test, EResult::failed ) );
    return;
 }
 

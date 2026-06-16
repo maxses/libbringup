@@ -27,7 +27,7 @@ void CTestAdcLine::run( )
    int value=m_adcLine.getAdcValue();
    printf("ADC-Value: %d; / %d mV\n", value, ( value * 3000 ) / 4095 );
 
-   testAssert("ADC value range", ( value >= m_min ) && ( value <= m_max ), value );
+   testAssert("ADC value range", ( value >= m_min ) && ( value <= m_max ) );
 
    return;
 }
