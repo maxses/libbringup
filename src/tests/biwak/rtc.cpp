@@ -21,6 +21,7 @@
 #include <biwak/rtc.hpp>
 #include <biwak/power.h>
 #include <lepto/units.h>
+#include <biwak/linker_script.h>
 
 
 /*--- Implementation -------------------------------------------------------*/
@@ -32,12 +33,9 @@ void CTestRtc::run( )
    int hour, minute, second;
    int secs1, secs2, diff;
    //int sta=0;
-   extern uint32_t __heap_end;
 
    // Catch the word right before the stack. Biwak will overwrite the lower end
    // of the stack for overflow detection.
-   uint32_t *preStackPointer=&__heap_end;
-   preStackPointer--;
 
    // If the rtc is not already valid, set some date and reboot. if the date is still not valid then, something is wrong.
    // Check if the date still is in some valid reange.
@@ -48,14 +46,14 @@ void CTestRtc::run( )
       m_rtc.setDate(2022, 5, 26);
       m_rtc.setTime(11, 00, 00);
       #if defined(STM32)
-         if ( *preStackPointer == 0x12345678 )
+         if ( __reset_command == 0x12345678 )
          {
-            *preStackPointer=0xFEFEFEFE;
+            __reset_command=0xFEFEFEFE;
             printf("Date still valid. Serious problem.\n");
             testAssert( "set RTC", false, 0 );
             return;
          }
-         *preStackPointer=0x12345678;
+         __reset_command=0x12345678;
          systemReset();
       #endif
    }
