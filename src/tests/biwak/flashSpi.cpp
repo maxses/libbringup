@@ -27,11 +27,11 @@ void CTestSpiFlash::run( )
    printf( "Jedec-Id: 0x%X\n", m_flash.readJedecId() );
    printf( "Size: %d Bytes\n", m_flash.size() );
 
-   testAssert( "Vendor", ( m_flash.vendor() > 0 ) && ( m_flash.vendor() < 0x40000000 ), m_flash.vendor() );
-   testAssert( "Id", ( m_flash.readId() > 0 ) && ( m_flash.readId() < 0x40000000 ), m_flash.readId() );
-   testInfo( "Jedec-Id", m_flash.readJedecId() );
-   testAssert( "Size", ( m_flash.size() > 0 ) && ( m_flash.size() < 0x40000000 ), m_flash.size() );
-   testInfo( "Size (Bytes)", m_flash.size() );
+   testAssert( "Vendor", ( m_flash.vendor() > 0 ) && ( m_flash.vendor() < 0x40000000 ) );
+   testAssert( "Id", ( m_flash.readId() > 0 ) && ( m_flash.readId() < 0x40000000 ) );
+   //testInfo( "Jedec-Id", m_flash.readJedecId() );
+   testAssert( "Size", ( m_flash.size() > 0 ) && ( m_flash.size() < 0x40000000 ) );
+   //testInfo( "Size (Bytes)", m_flash.size() );
 
    return;
 }

@@ -101,9 +101,9 @@ void CTestFlashIntern::run( )
       printf("Error in page at: %p\n", start);
       
       #if defined STM32
-         testFatal("Err", (int)start);
+         testFatal( "Err" );
       #else
-         testFatal("Err", 0);
+         testFatal( "Err" );
       #endif
    }
 

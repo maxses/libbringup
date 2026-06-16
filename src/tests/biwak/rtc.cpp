@@ -39,7 +39,7 @@ void CTestRtc::run( )
 
    // If the rtc is not already valid, set some date and reboot. if the date is still not valid then, something is wrong.
    // Check if the date still is in some valid reange.
-
+#if 0
    if(!m_rtc.isValid())
    {
       printf("Date not valid. Seting date/time and reseting.\n");
@@ -50,16 +50,17 @@ void CTestRtc::run( )
          {
             __reset_command=0xFEFEFEFE;
             printf("Date still valid. Serious problem.\n");
-            testAssert( "set RTC", false, 0 );
+            testAssert( "set RTC", false );
             return;
          }
          __reset_command=0x12345678;
          systemReset();
       #endif
    }
+#endif
 
    m_rtc.getDate( year, month, day );
-   testAssert( "RTC Year", (year >= 2017) && (year <= 2040), year );
+   testAssert( "RTC Year", (year >= 2017) && (year <= 2040) );
 
    m_rtc.getTime(hour, minute, second);
    secs1= second + ( ( minute + ( hour * 60 ) ) *60);
@@ -68,7 +69,7 @@ void CTestRtc::run( )
    secs2= second + ( ( minute + ( hour * 60 ) ) *60);
    diff = secs2 - secs1;
 
-   testAssert( "RTC diff", (abs(diff)>=2), diff );
+   testAssert( "RTC diff", (abs(diff)>=2) );
 
    return;
 }

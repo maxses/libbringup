@@ -59,14 +59,14 @@ void CTestButton::run( )
             {
                eState=eGoWaitPressed;
             }
-            testAssertSilent("Value stays low", getValue() == false, getValue());
+            testAssertSilent("Value stays low", getValue() == false );
             if( !( getValue() == false ) )
             {
                eState=eEnd;
             }
             break;
          case (eGoWaitPressed):
-            testAssert("Value is low in idle", getValue() == false, getValue());
+            testAssert("Value is low in idle", getValue() == false );
             printf("Now press the button/input %s\n",
                    (m_mode==EMode::eButton) ? "and hold it good." : "and release it."
                                               );
@@ -75,13 +75,13 @@ void CTestButton::run( )
          case (eWaitPressed):
             if( lrElapsedSeconds( &timer, 10) )
             {
-               testAssert("Value did not get high", false, getValue());
+               testAssert("Value did not get high", false );
                eState=eEnd;
             }
             else if ( getValue() )
             {
                timer=lrNow();
-               testAssert("Value did get high", getValue() == true, getValue());
+               testAssert("Value did get high", getValue() == true );
                printf("Good job! %s\n",
                       ( m_mode==EMode::eButton ) ? "Hold it pressed." : "");
                eState=eWaitHigh;
@@ -100,7 +100,7 @@ void CTestButton::run( )
             }
             else
             {
-               testAssertSilent("Value stays high", getValue()==true, getValue());
+               testAssertSilent("Value stays high", getValue()==true );
                if( !( getValue()==true ) )
                {
                   printf("Done. Value did not stay high\n");
@@ -112,7 +112,7 @@ void CTestButton::run( )
             finished=true;
             break;
          default:
-            testAssert("Invalid State", 0, eState);
+            testAssert("Invalid State", 0 );
             break;
       }
    }

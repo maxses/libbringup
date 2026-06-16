@@ -44,7 +44,7 @@ void CTestRetain::run( )
    // Destroy exyisting retain data in order not to fool myself
    memset(&data, 0x0, 0x40);
    sta=m_pI2cFlash.writeData(0x40, &data, 0x40);
-   testAssert("write", sta==0, sta);
+   testAssert( "write", sta==0 );
 
    /*
    memset(&data, 0xEE, 0x80);
@@ -66,7 +66,7 @@ void CTestRetain::run( )
    container = m_pRetain2->store();
    //lInfo("Data size store: %d", m_pRetain2->getSize() );
 
-   testAssert( "Store", container >= 0, container );
+   testAssert( "Store", container >= 0 );
 
 #if 0
 #if ! defined( NDEBUG )
@@ -80,13 +80,13 @@ void CTestRetain::run( )
 #if 1
    data2.reserved[0]=0xEE;
    container = m_pRetain2->restore();
-   testAssert( "Restore", container >= 0, container );
+   testAssert( "Restore", container >= 0 );
    printf("Res Cont: 0x%X", container);
 
    biwakEventLoop();
    //lInfo("Data size restore: %d", m_pRetain2->getSize() );
 
-   testAssert( "Data", data2.reserved[0]==0xAA, data2.reserved[0] );
+   testAssert( "Data", data2.reserved[0] == (char)0xAA );
 
    #if 0
    hexDump( &data2, sizeof(data2));

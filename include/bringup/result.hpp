@@ -42,7 +42,7 @@ public:
       ,m_pSubject( 0 )
    {
    };
-   CResult(const CSubject* subject, const char *testString, EResult eResult, int value)
+   CResult(const CSubject* subject, const char *testString, EResult eResult)
       :m_testString( testString )
       ,m_eResult( eResult )
       ,m_pSubject( subject )
@@ -51,7 +51,7 @@ public:
    {
       return( m_testString );
    }
-   const EResult getResult() const
+   EResult getResult() const
    {
       return( m_eResult );
    }

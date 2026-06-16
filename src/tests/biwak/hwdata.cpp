@@ -34,7 +34,7 @@ void CTestHwData::run( )
 
    //SEepromHwData *hwData=(SEepromHwData *)m_data;
    sta = m_pRetain->restore();
-   testAssert( "Restore", sta >= 0, sta );
+   testAssert( "Restore", sta >= 0 );
    return;
 }
 
