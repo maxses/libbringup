@@ -121,7 +121,7 @@ if( USE_HWINFO )
       ${PROJECT_NAME}
       hwinfo
    )
-endif( USE_BIWAK )
+endif( USE_HWINFO )
 
 target_include_directories(
    ${PROJECT_NAME} 
