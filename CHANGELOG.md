@@ -1,3 +1,7 @@
+# Changes for v0.2.1
+
+CMake: Fixed typo
+
 # Changes for v0.2.0
 
 * Fixed compiler warnings
