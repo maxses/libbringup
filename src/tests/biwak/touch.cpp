@@ -38,7 +38,8 @@ void CTestTouch::run( )
                        m_display.width()-border+2, m_display.height()-border+2, white);
    m_display.drawRect( border-2, m_display.height()-border-2,
                        border+2, m_display.height()-border+2, white);
-   m_touch.signalEvent().connect(this, &CTestTouch::slotEvent );
+   //m_touch.signalEvent().connect(this, &CTestTouch::slotEvent );
+   CONNECT( m_touch.signalEvent(), this, CTestTouch::slotEvent );
    CBringupUserInput input( '\1', 20);
 
    printf("Pres the bigger rectangle on the display. Press 'a' on the keyboard to abort the test.\n");
