@@ -1,3 +1,7 @@
+# Changes for v0.2.2
+
+* Adopted changes of liblepto
+
 # Changes for v0.2.1
 
 CMake: Fixed typo
