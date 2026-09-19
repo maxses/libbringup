@@ -68,8 +68,10 @@ void CBringupWriter::printSoftwareInfo() const
    #if defined GIT_REV_libarena
       tableRow("libarena", INFO(_libarena) );
    #endif
-
+      
+   #if defined GIT_REV_liblepto
    tableRow("liblepto", INFO(_liblepto) );
+   #endif
 
    #if defined GIT_REV_libHALWrapper
       tableRow("libHALWrapper", INFO(_libHALWrapper) );

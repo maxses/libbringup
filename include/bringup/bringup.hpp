@@ -18,7 +18,12 @@
 
 #include <lepto/list.hpp>
 #include <bringup/subject.hpp>
-#include <biwak/sysTimer.hpp>
+
+#if USE_BIWAK
+   #include <biwak/sysTimer.hpp>
+#else
+   #include <chrono>
+#endif
 
 
 /*--- Declaration ----------------------------------------------------------*/
@@ -85,7 +90,12 @@ class CBringupUserInput
       int m_target;
       int m_timeout;
       int m_result;
-      lrtimer_t m_timer;
+      
+      #if USE_BIWAK
+         lrtimer_t m_timer;
+      #else
+         std::chrono::steady_clock::time_point m_timer;
+      #endif
 
 public:
       CBringupUserInput( int target, int timeout );

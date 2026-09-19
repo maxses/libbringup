@@ -18,7 +18,7 @@
 
 #include <bringup/tests/crc.hpp>
 #include <lepto/crc32.h>
-#include <arena_app.h>
+//#include <arena_app.h>
 
 
 /*--- Implementation -------------------------------------------------------*/

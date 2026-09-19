@@ -88,16 +88,24 @@ CBringupUserInput::CBringupUserInput(int target, int timeout )
    ,m_timeout(timeout)
    ,m_result(-1)
 {
-   m_timer=lrNow();
+   #if USE_BIWAK
+      m_timer=lrNow();
+   #else
+      m_timer=std::chrono::steady_clock::now();
+   #endif
 }
 
 bool CBringupUserInput::loop()
 {
    int c;
 
+   #if USE_BIWAK
    biwakEventLoop();
 
    if( lrElapsedSeconds(&m_timer, m_timeout))
+   #else
+   if( std::chrono::steady_clock::now() - m_timer >= std::chrono::seconds(1))
+   #endif
    {
       m_result=2;
       return(false);
