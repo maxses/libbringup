@@ -13,6 +13,8 @@ project( bringup )
 # Is shipped by liblepto
 find_package( leptoGitVersion REQUIRED )
 
+enable_testing()
+
 set(
    SOURCES
       src/bringup.cpp
@@ -130,6 +132,14 @@ target_include_directories(
    PRIVATE
       "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
+
+
+if ( HOST )
+
+   add_subdirectory ( tests )
+   add_subdirectory ( example )
+
+endif ( HOST )
 
 
 #------------------------------------------------------------------------------
