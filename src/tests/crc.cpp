@@ -51,7 +51,7 @@ void CTestCrc::run()
       #if ! ARENA_USE_CRC
          // Hardware-CRC is not used on this board
          printf("Error: Hardware CRC is not used\n");
-         testAssert( "CRC32 HW", 1 == 2, crc );
+         testAssert( "CRC32 HW", 1 == 2 );
          return;
       #endif
    #endif // ? STM32
