@@ -36,6 +36,9 @@ class CSubjectCrc: public CSubject
 
 int main( int argc, const char* argv[] )
 {
+   (void)argc;
+   (void)argv;
+
    CBringup bringup;
    
    bringup.addTest( new CSubjectCrc() );
